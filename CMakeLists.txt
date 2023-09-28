@@ -39,8 +39,19 @@ set(LIBTOOL_REVISION 1)
 # removed or changed
 set(LIBTOOL_AGE 5)
 
+###########################
+# Itron CONFIG
 SET(CMAKE_C_FLAGS "-fPIC ")
-option(WOLFSSL_USER_SETTINGS "user settings" ON)
+
+#set(WOLFSSL_USER_SETTINGS ON CACHE BOOL "user settings")
+option(WOLFSSL_ASYNC_CRYPT "async" OFF)
+option(WOLFSSL_SYS_CA_CERTS "none" OFF)
+option(WOLFSSL_OLD_TLS, "none" OFF)
+option(WOLFSSL_TLSV12, "none" OFF)
+option(WOLFSSL_SNI, "none" ON)
+option(WOLFSSL_TLSX "none" ON)
+###########################
+
 
 math(EXPR LIBTOOL_SO_VERSION "${LIBTOOL_CURRENT} - ${LIBTOOL_AGE}")
 set(LIBTOOL_FULL_VERSION ${LIBTOOL_SO_VERSION}.${LIBTOOL_AGE}.${LIBTOOL_REVISION})
@@ -1624,7 +1635,7 @@ add_option("WOLFSSL_CRYPT_TESTS_HELP"
 # Asynchronous threading
 add_option("WOLFSSL_ASYNC_THREADS"
     "Enable Asynchronous Threading (default: enabled)"
-    "yes" "yes;no")
+    "no" "yes;no")
 
 if(WOLFSSL_ASYNC_CRYPT AND WOLFSSL_ASYNC_THREADS)
     if(CMAKE_USE_PTHREADS_INIT)
@@ -1969,7 +1980,7 @@ file(APPEND ${CYASSL_OPTION_FILE} ${OPTION_FILE_CONTENTS})
 
 # TODO: - Build shared/static libs based on enables. Check CMake
 #         global flag BUILD_SHARED_LIBS.
-option(BUILD_SHARED_LIBS "Build shared libraries (.dll/.so) instead of static ones (.lib/.a)" ON)
+option(BUILD_SHARED_LIBS "Build shared libraries (.dll/.so) instead of static ones (.lib/.a)" OFF)
 
 set(LIB_SOURCES "")
 # Generates a list of sources to include in the library.

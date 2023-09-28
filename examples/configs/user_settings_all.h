@@ -76,7 +76,7 @@ extern "C" {
 //#define WOLFSSL_DTLS13
 
 /* DG Disabled SSLv3 and TLSv1.0 - should avoid using */
-//#define WOLFSSL_ALLOW_SSLV3
+#define WOLFSSL_ALLOW_SSLV3
 //#define WOLFSSL_ALLOW_TLSV10
 
 /* TLS Extensions */
