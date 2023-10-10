@@ -50,6 +50,9 @@ option(WOLFSSL_OLD_TLS, "none" OFF)
 option(WOLFSSL_TLSV12, "none" OFF)
 option(WOLFSSL_SNI, "none" ON)
 option(WOLFSSL_TLSX "none" ON)
+option(WOLFSSL_FILESYSTEM "none" OFF)
+option(WOLFSSL_CRYPT_TESTS "none" ON)
+option(WOLFSSL_EXAMPLES "none" ON)
 ###########################
 
 
@@ -2117,6 +2120,11 @@ if(WOLFSSL_EXAMPLES)
     set_property(TARGET unit_test
                  PROPERTY RUNTIME_OUTPUT_NAME
                  unit.test)
+    add_test(
+        NAME unit.test
+        COMMAND $<TARGET_FILE:unit_test>
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        )
 endif()
 
 if(WOLFSSL_CRYPT_TESTS)
