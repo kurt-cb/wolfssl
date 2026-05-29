@@ -53,6 +53,9 @@ option(WOLFSSL_TLSX "none" ON)
 option(WOLFSSL_FILESYSTEM "none" OFF)
 option(WOLFSSL_CRYPT_TESTS "none" ON)
 option(WOLFSSL_EXAMPLES "none" ON)
+# Required for X.509 Certificate Policies extension (OID 2.5.29.32) used by
+# Itron IEEE root certs.  Without this, wolfSSL rejects them with ASN_CRIT_EXT_E.
+option(WOLFSSL_CERTEXT "none" ON)
 ###########################
 
 
