@@ -56,6 +56,9 @@ option(WOLFSSL_EXAMPLES "none" ON)
 # Required for X.509 Certificate Policies extension (OID 2.5.29.32) used by
 # Itron IEEE root certs.  Without this, wolfSSL rejects them with ASN_CRIT_EXT_E.
 option(WOLFSSL_CERTEXT "none" ON)
+# WOLFSSL_CERT_EXT depends on CertName which is only declared when WOLFSSL_CERT_GEN
+# is also enabled.  Enable both together to avoid the undeclared-identifier error.
+option(WOLFSSL_CERTGEN "none" ON)
 ###########################
 
 
