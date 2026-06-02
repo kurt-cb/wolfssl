@@ -59,6 +59,9 @@ option(WOLFSSL_CERTEXT "none" ON)
 # WOLFSSL_CERT_EXT depends on CertName which is only declared when WOLFSSL_CERT_GEN
 # is also enabled.  Enable both together to avoid the undeclared-identifier error.
 option(WOLFSSL_CERTGEN "none" ON)
+# Enable CRL support so wolfSSL_CTX_EnableCRL / wolfSSL_CTX_LoadCRLBuffer are
+# available in WolfSSLConnection.cpp for revocation checking.
+set(WOLFSSL_CRL "yes" CACHE STRING "Enable CRL support" FORCE)
 ###########################
 
 
